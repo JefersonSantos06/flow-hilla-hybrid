@@ -10,7 +10,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import jakarta.annotation.security.RolesAllowed;
 
-@PageTitle("Flow User")
+@PageTitle("Flow Usuario")
 @Menu(icon = "line-awesome/svg/globe-solid.svg", order = 2)
 @Route(value = "flow-user")
 @RolesAllowed("USER")

@@ -1,27 +1,28 @@
-package com.example.application.services;
+package com.example.application.data.services.geral;
 
-import com.example.application.data.User;
-import com.example.application.data.UserRepository;
-import java.util.Optional;
+import com.example.application.data.entities.geral.Usuario;
+import com.example.application.data.repositories.geral.UsuarioRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
-    private final UserRepository repository;
+    private final UsuarioRepository repository;
 
-    public UserService(UserRepository repository) {
+    public UserService(UsuarioRepository repository) {
         this.repository = repository;
     }
 
-    public Optional<User> get(Long id) {
+    public Optional<Usuario> get(Long id) {
         return repository.findById(id);
     }
 
-    public User update(User entity) {
+    public Usuario update(Usuario entity) {
         return repository.save(entity);
     }
 
@@ -29,11 +30,11 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public Page<User> list(Pageable pageable) {
+    public Page<Usuario> list(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
-    public Page<User> list(Pageable pageable, Specification<User> filter) {
+    public Page<Usuario> list(Pageable pageable, Specification<Usuario> filter) {
         return repository.findAll(filter, pageable);
     }
 

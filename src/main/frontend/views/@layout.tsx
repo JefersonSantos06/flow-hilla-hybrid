@@ -9,6 +9,7 @@ import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 
 const defaultTitle = document.title;
 const documentTitleSignal = signal('');
+// @ts-ignore
 effect(() => (document.title = documentTitleSignal.value));
 
 // Publish for Vaadin to use
@@ -51,6 +52,7 @@ export default function MainLayout() {
                 {state.user.name}
               </div>
               <Button
+
                 onClick={async () => {
                   await logout();
                   document.location.reload();

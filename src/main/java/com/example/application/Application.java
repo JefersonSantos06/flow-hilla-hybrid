@@ -1,6 +1,6 @@
 package com.example.application;
 
-import com.example.application.data.UserRepository;
+import com.example.application.data.repositories.geral.UsuarioRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import org.apache.commons.lang3.ObjectUtils;
@@ -25,7 +25,7 @@ public class Application implements AppShellConfigurator {
 
     @Bean
     SqlDataSourceScriptDatabaseInitializer dataSourceScriptDatabaseInitializer(DataSource dataSource,
-            SqlInitializationProperties properties, UserRepository repository) {
+            SqlInitializationProperties properties, UsuarioRepository repository) {
         // This bean ensures the database is only initialized when empty
         return new SqlDataSourceScriptDatabaseInitializer(dataSource, properties) {
             @Override
