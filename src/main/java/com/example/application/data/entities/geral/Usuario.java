@@ -64,4 +64,11 @@ public class Usuario extends AbstractEntity {
         this.profilePicture = profilePicture;
     }
 
+    public boolean hasRole(final Role role) {
+        return this.roles.contains(role);
+    }
+
+    public boolean isAdmin() {
+        return hasRole(Role.ADMIN);
+    }
 }
