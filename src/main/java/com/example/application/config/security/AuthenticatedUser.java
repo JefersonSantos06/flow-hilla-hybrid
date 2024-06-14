@@ -1,4 +1,4 @@
-package com.example.application.security;
+package com.example.application.config.security;
 
 import com.example.application.data.entities.geral.Usuario;
 import com.example.application.data.repositories.geral.UsuarioRepository;

@@ -1,4 +1,4 @@
-package com.example.application.security;
+package com.example.application.config.security;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import org.springframework.context.annotation.Bean;
