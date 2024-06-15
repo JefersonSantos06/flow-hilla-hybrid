@@ -1,4 +1,4 @@
-package com.example.application.data.entities.dtos;
+package com.example.application.data.dtos.financeiro;
 
 import com.example.application.data.entities.financeiro.Cartao;
 import jakarta.validation.constraints.Digits;
@@ -29,6 +29,14 @@ public class CartaoDto implements Serializable {
 
     public static CartaoDto fromEntity(Cartao entity) {
         return new CartaoDto(entity.getId(), ContaDto.fromEntity(entity.getConta()), entity.getNome(), entity.getLimite());
+    }
+
+    public static Cartao toEntity(final CartaoDto dto) {
+        return new Cartao()
+            .setId(dto.getId())
+            .setConta(ContaDto.toEntity(dto.getConta()))
+            .setNome(dto.getNome())
+            .setLimite(dto.getLimite());
     }
 
     public Long getId() {

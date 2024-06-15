@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario extends AbstractEntity {
+public class Usuario extends AbstractEntity<Usuario> {
 
     private String username;
     private String name;
@@ -28,40 +28,45 @@ public class Usuario extends AbstractEntity {
         return username;
     }
 
-    public void setUsername(String username) {
+    public Usuario setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Usuario setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getHashedPassword() {
         return hashedPassword;
     }
 
-    public void setHashedPassword(String hashedPassword) {
+    public Usuario setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
+        return this;
     }
 
     public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public Usuario setRoles(Set<Role> roles) {
         this.roles = roles;
+        return this;
     }
 
     public byte[] getProfilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(byte[] profilePicture) {
+    public Usuario setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
+        return this;
     }
 
     public boolean hasRole(final Role role) {

@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "cartao", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"conta_id", "nome"})
 })
-public class Cartao extends AbstractEntity {
+public class Cartao extends AbstractEntity<Cartao> {
 
     @ManyToOne
     @JoinColumn(name = "conta_id", nullable = false)

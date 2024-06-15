@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class AbstractEntity {
+public abstract class AbstractEntity<T> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
@@ -41,8 +41,9 @@ public abstract class AbstractEntity {
         return id;
     }
 
-    public void setId(Long id) {
+    public T setId(Long id) {
         this.id = id;
+        return self();
     }
 
     public int getVersion() {
@@ -53,32 +54,41 @@ public abstract class AbstractEntity {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
+    public T setLastModifiedDate(LocalDateTime lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+        return self();
     }
 
     public Long getLastModifiedBy() {
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(Long lastModifiedBy) {
+    public T setLastModifiedBy(Long lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
+        return self();
     }
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public T setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
+        return self();
     }
 
     public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Long createdBy) {
+    public T setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
+        return self();
+    }
+
+    @SuppressWarnings("unchecked")
+    private T self() {
+        return (T) this;
     }
 
     @Override
@@ -90,8 +100,8 @@ public abstract class AbstractEntity {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof AbstractEntity that)) {
+    public boolean equals(final Object obj) {
+        if (!(obj instanceof AbstractEntity<?> that)) {
             return false; // null or not an AbstractEntity class
         }
         if (getId() != null) {

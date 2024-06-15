@@ -3,6 +3,7 @@ package com.example.application.data.services.financeiro;
 import com.example.application.config.security.AuthenticatedUser;
 import com.example.application.data.entities.financeiro.Conta;
 import com.example.application.data.repositories.financeiro.ContaRepository;
+import com.vaadin.hilla.BrowserCallable;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @Service
 @PermitAll
+@BrowserCallable
 public class ContaService {
 
     private final ContaRepository contaRepository;

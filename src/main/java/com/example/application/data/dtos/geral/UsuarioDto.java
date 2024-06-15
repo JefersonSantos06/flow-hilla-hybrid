@@ -1,4 +1,4 @@
-package com.example.application.data.entities.dtos;
+package com.example.application.data.dtos.geral;
 
 import com.example.application.data.entities.geral.Usuario;
 
@@ -26,6 +26,14 @@ public class UsuarioDto implements Serializable {
 
     public static UsuarioDto fromEntity( Usuario entity) {
         return new UsuarioDto(entity.getId(), entity.getUsername(), entity.getName(), entity.getProfilePicture());
+    }
+
+    public static Usuario toEntity(final UsuarioDto dto) {
+        return new Usuario()
+            .setId(dto.getId())
+            .setUsername(dto.getUsername())
+            .setName(dto.getName())
+            .setProfilePicture(dto.getProfilePicture().clone());
     }
 
     public Long getId() {

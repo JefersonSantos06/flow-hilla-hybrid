@@ -1,4 +1,4 @@
-package com.example.application.data.entities.dtos;
+package com.example.application.data.dtos.financeiro;
 
 import com.example.application.data.entities.financeiro.Cartao;
 
@@ -19,6 +19,11 @@ public class CartaoWithMovimentacoesDto extends CartaoDto {
             CartaoDto.fromEntity(entity),
             entity.getMovimentacoes().stream().map(MovimentacaoDto::fromEntity).collect(Collectors.toList())
         );
+    }
+
+    public static Cartao toEntity(final CartaoWithMovimentacoesDto dto) {
+        return CartaoDto.toEntity(dto)
+            .setMovimentacoes(dto.getMovimentacoes().stream().map(MovimentacaoDto::toEntity).collect(Collectors.toList()));
     }
 
     public List<MovimentacaoDto> getMovimentacoes() {

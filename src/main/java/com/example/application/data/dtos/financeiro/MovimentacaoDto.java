@@ -1,4 +1,4 @@
-package com.example.application.data.entities.dtos;
+package com.example.application.data.dtos.financeiro;
 
 import com.example.application.data.entities.financeiro.Movimentacao;
 import com.example.application.data.entities.financeiro.TipoMovimentacao;
@@ -42,6 +42,45 @@ public class MovimentacaoDto implements Serializable {
 
     public static MovimentacaoDto fromEntity(final Movimentacao entity) {
         return new MovimentacaoDto(entity.getId(), entity.getValor(), entity.getData(), entity.getDescricao(), entity.getTotalParcelas(), entity.getParcelaAtual(), entity.getTipo());
+    }
+
+    public static Movimentacao toEntity(final MovimentacaoDto dto) {
+        return new Movimentacao()
+            .setId(dto.getId())
+            .setValor(dto.getValor())
+            .setData(dto.getData())
+            .setDescricao(dto.getDescricao())
+            .setTotalParcelas(dto.getTotalParcelas())
+            .setParcelaAtual(dto.getParcelaAtual())
+            .setTipo(dto.getTipo());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public @Digits(integer = 10, fraction = 2) BigDecimal getValor() {
+        return valor;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public @Min(1) Integer getTotalParcelas() {
+        return totalParcelas;
+    }
+
+    public @Min(1) Integer getParcelaAtual() {
+        return parcelaAtual;
+    }
+
+    public TipoMovimentacao getTipo() {
+        return tipo;
     }
 
     @Override

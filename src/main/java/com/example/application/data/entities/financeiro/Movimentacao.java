@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "movimentacao")
 @Check(constraints = "conta_id IS NOT NULL OR cartao_id IS NOT NULL")
-public class Movimentacao extends AbstractEntity {
+public class Movimentacao extends AbstractEntity<Movimentacao> {
 
     @ManyToOne
     @JoinColumn(name = "conta_id", nullable = true)

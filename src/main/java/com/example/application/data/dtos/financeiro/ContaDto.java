@@ -1,5 +1,6 @@
-package com.example.application.data.entities.dtos;
+package com.example.application.data.dtos.financeiro;
 
+import com.example.application.data.dtos.geral.UsuarioDto;
 import com.example.application.data.entities.financeiro.Conta;
 import jakarta.validation.constraints.Digits;
 
@@ -29,6 +30,14 @@ public class ContaDto implements Serializable {
 
     public static ContaDto fromEntity(Conta entity) {
         return new ContaDto(entity.getId(), UsuarioDto.fromEntity(entity.getUsuario()), entity.getNome(), entity.getSaldo());
+    }
+
+    public static Conta toEntity(final ContaDto dto) {
+        return new Conta()
+            .setId(dto.getId())
+            .setUsuario(UsuarioDto.toEntity(dto.getUsuario()))
+            .setNome(dto.getNome())
+            .setSaldo(dto.getSaldo());
     }
 
     public Long getId() {
